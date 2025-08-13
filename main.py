@@ -13,4 +13,4 @@ class Item(BaseModel):
 
 @app.post("/item/")
 async def create_item(item: Item): # 上で定義した形で入ってきて欲しい
-    
+    return {"message": f"{item.name}は税込価格{int(item.price*item.tax)}円です。"}
