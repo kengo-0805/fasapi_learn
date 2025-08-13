@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from typing import Optional, List
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class ShopInfo(BaseModel):
     name: str
@@ -8,7 +8,7 @@ class ShopInfo(BaseModel):
 
 # データの構造を定義
 class Item(BaseModel):
-    name: str
+    name: str = Field(min_length=4, max_length=12)  # 名前は4文字以上20文字以下
     description: Optional[str] = None
     price: int
     tax: Optional[float] = None
